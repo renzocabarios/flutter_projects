@@ -7,7 +7,8 @@ class UserRepositoryImpl extends UserRepository {
   UserRepositoryImpl({required super.userSource});
 
   @override
-  Future<DataState<List<UserEntity>>> addUser(Object request) async {
+  Future<DataState<List<UserEntity>>> addUser(
+      Map<String, dynamic> request) async {
     try {
       HttpResponse<UserEntity> data = await userSource.addUser(request);
       return DataSuccess<List<UserEntity>>(

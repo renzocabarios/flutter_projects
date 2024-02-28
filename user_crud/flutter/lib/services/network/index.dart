@@ -9,7 +9,7 @@ abstract class Network {
   Future<HttpResponse> delete(String uri);
 }
 
-class HttpResponse<T extends Object> {
+class HttpResponse<T extends dynamic> {
   final String message;
   final String status;
   final List<T> data;

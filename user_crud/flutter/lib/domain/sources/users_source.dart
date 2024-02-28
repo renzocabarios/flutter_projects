@@ -9,6 +9,6 @@ abstract class UserSource {
   Future<HttpResponse<UserEntity>> getUsers();
   Future<HttpResponse<UserEntity>> getUserById(String id);
   Future<HttpResponse<UserEntity>> updateUser(String id, Object request);
-  Future<HttpResponse<UserEntity>> addUser(Object request);
+  Future<HttpResponse<UserEntity>> addUser(Map<String, dynamic> request);
   Future<HttpResponse<UserEntity>> deleteUser(String id);
 }

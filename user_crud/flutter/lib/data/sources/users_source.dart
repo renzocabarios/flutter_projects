@@ -7,7 +7,7 @@ class UserSourceImpl extends UserSource {
   UserSourceImpl({required super.network});
 
   @override
-  Future<HttpResponse<UserEntity>> addUser(Object request) async {
+  Future<HttpResponse<UserEntity>> addUser(Map<String, dynamic> request) async {
     final response = await network.post("users", request);
     final mapped =
         response.data.map<UserEntity>((e) => UserModel.fromJson(e)).toList();
@@ -48,8 +48,10 @@ class UserSourceImpl extends UserSource {
   @override
   Future<HttpResponse<UserEntity>> getUsers() async {
     final response = await network.get("users");
-    final mapped =
-        response.data.map<UserEntity>((e) => UserModel.fromJson(e)).toList();
+
+    final mapped = response.data.map<UserModel>((e) {
+      return UserModel.fromJson(e);
+    }).toList();
 
     return HttpResponse<UserEntity>(
       data: mapped,
